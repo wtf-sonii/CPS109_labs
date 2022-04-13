@@ -620,6 +620,30 @@ def duplicate_digit_bonus(n):
                 score += 10**(k-2)*2
             return(score)
     return(score)
+
+def brangelina(first,second):
+    vowels='aeiou'
+    i=0
+    while second[i] not in vowels:
+        i+=1
+    second=second[i:]
+    n_groups=0
+    grps=[]
+    in_grp=False
+    
+    for j in range(len(first)):
+        if first[j] in vowels:
+            if not in_grp:
+                grps.append(j)
+                in_grp= True
+        else:
+            in_grp=False
+    n_groups=len(grps)
+    if n_groups== 1:
+        first = first[:grps[0]]
+    else:
+        first = first[:grps[-2]]
+    return first+second
     
     
 
